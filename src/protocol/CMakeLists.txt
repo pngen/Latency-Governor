@@ -1,0 +1,7 @@
+add_library(latency_governor_protocol STATIC protocol.cpp)
+add_library(latency_governor::protocol ALIAS latency_governor_protocol)
+target_link_libraries(latency_governor_protocol PUBLIC latency_governor)
+lg_apply_warnings(latency_governor_protocol)
+if(WIN32)
+    target_link_libraries(latency_governor_protocol PUBLIC ws2_32)
+endif()
